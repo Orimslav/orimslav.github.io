@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orimslav — Industrial Automation &amp; Python Developer</title>
+<meta name="description" content="Industrial Automation &amp; Python Developer — PLC, Modbus, ESP32, Slovakia">
+<link rel="icon" href="img/orimslav_logo_blue_transparent.ico" sizes="any">
+<link rel="icon" type="image/png" href="img/orimslav_logo_blue_transparent.png">
+<link rel="apple-touch-icon" href="img/orimslav_logo_blue_transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d12;--bg2:#13131a;--bg3:#1a1a24;--border:rgba(255,255,255,0.07);--bh:rgba(82,162,255,0.4);--blue:#52a2ff;--text:#e8e8f0;--muted:#7070a0;--tbc:#89bcff;--tbb:rgba(82,162,255,0.1);--green:#4ade80;--amber:#fbbf24;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(82,162,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(82,162,255,0.015) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 40px;}
+nav{border-bottom:1px solid var(--border);padding:13px 0;position:sticky;top:0;background:rgba(13,13,18,0.95);backdrop-filter:blur(14px);z-index:100;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.nav-logo img.logo{width:42px;height:42px;object-fit:contain;}
+.nav-brand{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;letter-spacing:0.06em;background:linear-gradient(90deg,#a8d4f8,#52a2ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-right{display:flex;align-items:center;gap:22px;}
+.nav-links{display:flex;gap:22px;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.lang-sw{display:flex;gap:4px;align-items:center;}
+.lb{background:transparent;border:1px solid var(--border);border-radius:5px;padding:3px 5px;cursor:pointer;transition:border-color .18s,transform .15s,opacity .18s;opacity:0.55;display:flex;align-items:center;}
+.lb:hover{opacity:0.85;border-color:rgba(255,255,255,0.2);}
+.lb.active{opacity:1;border-color:var(--blue);transform:scale(1.08);}
+.lb img{width:26px;height:17px;object-fit:cover;border-radius:2px;display:block;}
+.hero{padding:68px 0 48px;}
+.hero-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--blue);}
+h1{font-size:clamp(32px,5vw,60px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;margin-bottom:10px;font-family:'JetBrains Mono',monospace;background:linear-gradient(90deg,#a8d4f8 0%,#52a2ff 50%,#1858c8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:16px;color:var(--muted);font-weight:300;margin-bottom:28px;max-width:580px;}
+.hero-sub em{font-style:normal;color:var(--blue);}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn-p{background:var(--blue);color:#0d0d12;border:none;padding:10px 22px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .15s;display:inline-block;}
+.btn-p:hover{opacity:.88;transform:translateY(-1px);}
+.btn-g{background:transparent;color:var(--muted);border:1px solid var(--border);padding:10px 22px;border-radius:6px;font-size:14px;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s,transform .15s;display:inline-block;}
+.btn-g:hover{border-color:var(--bh);color:var(--text);transform:translateY(-1px);}
+.skills-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;margin-bottom:56px;display:flex;gap:7px;flex-wrap:wrap;}
+.sp{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);padding:4px 10px;border-radius:4px;white-space:nowrap;}
+.sh{display:flex;align-items:baseline;gap:16px;margin-bottom:22px;}
+.st{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;}
+.sl{flex:1;height:1px;background:var(--border);}
+.projects{margin-bottom:64px;}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:860px){.pg{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.pg{grid-template-columns:1fr;}}
+.pc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 18px;text-decoration:none;display:flex;flex-direction:column;gap:9px;transition:border-color .2s,background .2s,transform .2s;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;inset:0;background:rgba(82,162,255,0.04);opacity:0;transition:opacity .3s;}
+.pc:hover{border-color:var(--bh);background:var(--bg3);transform:translateY(-2px);}
+.pc:hover::before{opacity:1;}
+.pc:hover .pa{color:var(--blue);transform:translate(2px,-2px);}
+.pct{display:flex;align-items:flex-start;justify-content:space-between;}
+.pca{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px;}
+.cat-py{background:rgba(74,222,128,0.1);color:var(--green);}
+.cat-iot{background:rgba(251,191,36,0.1);color:var(--amber);}
+.pa{color:var(--muted);font-size:14px;transition:color .2s,transform .2s;position:relative;z-index:1;}
+.pn{font-size:15px;font-weight:500;color:#fff;line-height:1.3;position:relative;z-index:1;}
+.pd{font-size:12px;color:var(--muted);line-height:1.55;position:relative;z-index:1;}
+.pt{display:flex;gap:5px;flex-wrap:wrap;position:relative;z-index:1;margin-top:3px;}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tbc);background:var(--tbb);border:1px solid rgba(82,162,255,0.15);padding:2px 6px;border-radius:3px;}
+.services{margin-bottom:64px;}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:680px){.sg{grid-template-columns:1fr;}}
+.sc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:22px 18px;}
+.si{font-size:20px;margin-bottom:11px;display:block;}
+.sn{font-size:14px;font-weight:500;color:#fff;margin-bottom:7px;}
+.sd{font-size:12px;color:var(--muted);line-height:1.6;}
+.contact{margin-bottom:56px;}
+.cb{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:30px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.ct h3{font-size:19px;font-weight:400;color:#fff;margin-bottom:5px;}
+.ct p{font-size:13px;color:var(--muted);}
+.cl{display:flex;gap:8px;flex-wrap:wrap;}
+.cla{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 13px;border-radius:6px;transition:border-color .2s,color .2s;font-family:'JetBrains Mono',monospace;}
+.cla:hover{border-color:var(--bh);color:var(--blue);}
+.ccta{margin-top:14px;}
+.cf{margin-top:18px;display:grid;gap:13px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+@media(max-width:560px){.cf-row{grid-template-columns:1fr;}}
+.cf label{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;}
+.cf input,.cf textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:11px 13px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color .2s,background .2s;}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:var(--bh);background:var(--bg3);}
+.cf textarea{resize:vertical;min-height:120px;line-height:1.55;}
+.cf-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;overflow:hidden!important;}
+.cf-submit{justify-self:start;}
+.cf-submit[disabled]{opacity:.5;cursor:not-allowed;transform:none;}
+.cf-msg{display:none;font-size:13px;border-radius:6px;padding:11px 14px;line-height:1.5;}
+.cf-msg.ok{display:block;color:var(--green);background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);}
+.cf-msg.err{display:block;color:#ff6b6b;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.25);}
+footer{border-top:1px solid var(--border);padding:18px 0;text-align:center;}
+footer p{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+[data-lang]{display:none;}
+[data-lang].al{display:contents;}
+@keyframes fU{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.hero-label{animation:fU .45s ease both;}
+h1{animation:fU .45s .08s ease both;}
+.hero-sub{animation:fU .45s .16s ease both;}
+.hero-btns{animation:fU .45s .24s ease both;}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="wrap nav-inner">
+  <a class="nav-logo" href="#">
+    <img class="logo" src="img/orimslav_logo_blue_transparent.png" alt="Orimslav logo">
+    <span class="nav-brand">ORIMSLAV</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#projects"><span data-lang="sk" class="al">Projekty</span><span data-lang="en">Projects</span><span data-lang="ru">Проекты</span></a>
+      <a href="#services"><span data-lang="sk" class="al">Služby</span><span data-lang="en">Services</span><span data-lang="ru">Услуги</span></a>
+      <a href="#contact"><span data-lang="sk" class="al">Kontakt</span><span data-lang="en">Contact</span><span data-lang="ru">Контакт</span></a>
+    </div>
+    <div class="lang-sw">
+      <button class="lb active" onclick="setLang('sk')" title="Slovenčina">
+        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20600'%3E%3Crect%20width='900'%20height='200'%20fill='%23fff'/%3E%3Crect%20width='900'%20height='200'%20y='200'%20fill='%230b4ea2'/%3E%3Crect%20width='900'%20height='200'%20y='400'%20fill='%23ee1c25'/%3E%3Cdefs%3E%3CclipPath%20id='sk'%3E%3Cpath%20d='M122%20158%20L338%20158%20L338%20412%20Q338%20458%20230%20472%20Q122%20458%20122%20412%20Z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath%20d='M110%20148%20L350%20148%20L350%20414%20Q350%20470%20230%20486%20Q110%20470%20110%20414%20Z'%20fill='%23fff'/%3E%3Crect%20x='110'%20y='148'%20width='240'%20height='340'%20fill='%23ee1c25'%20clip-path='url%28%23sk%29'/%3E%3Cg%20clip-path='url%28%23sk%29'%3E%3Cellipse%20cx='168'%20cy='448'%20rx='58'%20ry='46'%20fill='%230b4ea2'/%3E%3Cellipse%20cx='230'%20cy='430'%20rx='66'%20ry='54'%20fill='%230b4ea2'/%3E%3Cellipse%20cx='292'%20cy='448'%20rx='58'%20ry='46'%20fill='%230b4ea2'/%3E%3C/g%3E%3Crect%20x='217'%20y='178'%20width='26'%20height='136'%20fill='%23fff'/%3E%3Crect%20x='188'%20y='198'%20width='84'%20height='21'%20fill='%23fff'/%3E%3Crect%20x='172'%20y='240'%20width='116'%20height='21'%20fill='%23fff'/%3E%3C/svg%3E" alt="SK">
+      </button>
+      <button class="lb" onclick="setLang('en')" title="English">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='a'%3E%3Cpath d='M0 0v30h60V0z'/%3E%3C/clipPath%3E%3CclipPath id='b'%3E%3Cpath d='M30 15h30v15zv15H0zH0V0zV0h30z'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23a)'%3E%3Cpath d='M0 0v30h60V0z' fill='%23012169'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' clip-path='url(%23b)' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/g%3E%3C/svg%3E" alt="EN">
+      </button>
+      <button class="lb" onclick="setLang('ru')" title="Русский">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Crect width='900' height='600' fill='%23fff'/%3E%3Crect width='900' height='400' y='200' fill='%230039a6'/%3E%3Crect width='900' height='200' y='400' fill='%23d52b1e'/%3E%3C/svg%3E" alt="RU">
+      </button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<div class="wrap">
+
+<section class="hero">
+  <h1>ORIMSLAV</h1>
+  <p class="hero-sub">
+    <span data-lang="sk" class="al">PLC programovanie, <em>Modbus / OPC UA</em>, Python desktop aplikácie, ESP32 — Slovakia</span>
+    <span data-lang="en">PLC programming, <em>Modbus / OPC UA</em>, Python desktop apps, ESP32 — Slovakia</span>
+    <span data-lang="ru">Программирование ПЛК, <em>Modbus / OPC UA</em>, Python приложения, ESP32 — Словакия</span>
+  </p>
+  <div class="hero-btns">
+    <a class="btn-p" href="#contact"><span data-lang="sk" class="al">Napíšte mi</span><span data-lang="en">Hire me</span><span data-lang="ru">Написать мне</span></a>
+    <a class="btn-g" href="https://github.com/Orimslav" target="_blank">GitHub &rarr;</a>
+    <a class="btn-g" href="https://www.linkedin.com/in/miroslav-hrbka-103857210" target="_blank">LinkedIn</a>
+    <a class="btn-g" href="https://ko-fi.com/orimslav" target="_blank">&#9749; Ko-fi</a>
+  </div>
+</section>
+
+<div class="skills-bar">
+  <span class="sp">Python 3</span><span class="sp">tkinter / PySide6</span><span class="sp">SQLite</span>
+  <span class="sp">Siemens TIA Portal</span><span class="sp">S7-1500</span><span class="sp">B&amp;R PLC</span>
+  <span class="sp">Modbus RTU / TCP</span><span class="sp">OPC UA</span><span class="sp">ESP32-S3</span>
+  <span class="sp">Waveshare</span><span class="sp">pymodbus</span><span class="sp">Arduino</span>
+  <span class="sp">Git / GitHub</span><span class="sp">Linux</span>
+</div>
+
+<section class="projects" id="projects">
+  <div class="sh">
+    <span class="st"><span data-lang="sk" class="al">Projekty</span><span data-lang="en">Projects</span><span data-lang="ru">Проекты</span></span>
+    <div class="sl"></div>
+  </div>
+  <div class="pg">
+    <a class="pc" href="https://orimslav.github.io/archiv_blockov/" target="_blank">
+      <div class="pct"><span class="pca cat-py">Python</span><span class="pa">&#8599;</span></div>
+      <div class="pn">Archív bločkov</div>
+      <div class="pd"><span data-lang="sk" class="al">Archivácia e-kasa bločkov cez USB QR skener. Profily, kategórie, PDF/Excel exporty.</span><span data-lang="en">Slovak e-kasa receipt archiving via USB QR scanner. Profiles, categories, PDF/Excel export.</span><span data-lang="ru">Архивация чеков e-kasa через USB QR-сканер. Профили, категории, экспорт PDF/Excel.</span></div>
+      <div class="pt"><span class="tag">QR / e-kasa</span><span class="tag">SQLite</span><span class="tag">reportlab</span><span class="tag">openpyxl</span></div>
+    </a>
+    <a class="pc" href="https://orimslav.github.io/camera_checker/" target="_blank">
+      <div class="pct"><span class="pca cat-py">Python</span><span class="pa">&#8599;</span></div>
+      <div class="pn">Camera Checker</div>
+      <div class="pd"><span data-lang="sk" class="al">Audit Dahua / Hikvision IP kamier — paralelná kontrola NTP, DST a časovej odchýlky.</span><span data-lang="en">Dahua / Hikvision IP camera audit — parallel NTP, DST and time drift check.</span><span data-lang="ru">Аудит IP-камер Dahua/Hikvision — проверка NTP, DST и временного дрейфа.</span></div>
+      <div class="pt"><span class="tag">PySide6</span><span class="tag">Dahua API</span><span class="tag">Hikvision</span><span class="tag">openpyxl</span></div>
+    </a>
+    <a class="pc" href="https://orimslav.github.io/Backup_tool/" target="_blank">
+      <div class="pct"><span class="pca cat-py">Python</span><span class="pa">&#8599;</span></div>
+      <div class="pn">Folder Backup Tool</div>
+      <div class="pd"><span data-lang="sk" class="al">Zálohovanie priečinkov do ZIP/RAR, AES-256 šifrovanie, system tray, SK/EN.</span><span data-lang="en">Folder backup to ZIP/RAR with AES-256 encryption, system tray, Windows notifications.</span><span data-lang="ru">Резервное копирование в ZIP/RAR, AES-256, системный трей, уведомления Windows.</span></div>
+      <div class="pt"><span class="tag">tkinter</span><span class="tag">AES-256</span><span class="tag">system tray</span><span class="tag">i18n</span></div>
+    </a>
+    <a class="pc" href="https://orimslav.github.io/level_sensor/" target="_blank">
+      <div class="pct"><span class="pca cat-iot">IoT / Modbus</span><span class="pa">&#8599;</span></div>
+      <div class="pn">Level Sensor Monitor</div>
+      <div class="pd"><span data-lang="sk" class="al">Monitorovanie snímača MY-136 cez Modbus TCP. RS485 &rarr; Ethernet prevodník &rarr; PC.</span><span data-lang="en">MY-136 pressure/level sensor monitoring via Modbus TCP. RS485 to Ethernet bridge.</span><span data-lang="ru">Мониторинг датчика MY-136 через Modbus TCP. RS485 → Ethernet → ПК.</span></div>
+      <div class="pt"><span class="tag">pymodbus</span><span class="tag">Modbus TCP</span><span class="tag">RS485</span><span class="tag">tkinter</span></div>
+    </a>
+    <a class="pc" href="https://orimslav.github.io/modbus-monitor-waveshare/" target="_blank">
+      <div class="pct"><span class="pca cat-iot">IoT / Modbus</span><span class="pa">&#8599;</span></div>
+      <div class="pn">Modbus IO Monitor</div>
+      <div class="pd"><span data-lang="sk" class="al">Monitor a ovládanie Waveshare Modbus RTU IO 8CH cez Modbus TCP/IP.</span><span data-lang="en">Monitor and control Waveshare Modbus RTU IO 8CH module via Modbus TCP/IP.</span><span data-lang="ru">Мониторинг и управление Waveshare Modbus RTU IO 8CH через Modbus TCP/IP.</span></div>
+      <div class="pt"><span class="tag">pymodbus</span><span class="tag">Waveshare RTU</span><span class="tag">8CH I/O</span><span class="tag">tkinter</span></div>
+    </a>
+    <a class="pc" href="https://orimslav.github.io/audio_converter/" target="_blank">
+      <div class="pct"><span class="pca cat-iot">ESP32 / IoT</span><span class="pa">&#8599;</span></div>
+      <div class="pn">Audio &rarr; Modbus TCP</div>
+      <div class="pd"><span data-lang="sk" class="al">Detekcia audio signálu bzučiaka cez ESP32-S3-ETH ako Modbus TCP coil pre PLC.</span><span data-lang="en">Machine buzzer audio detection via ESP32-S3-ETH, exposed as Modbus TCP coil for PLC.</span><span data-lang="ru">Детектор звука через ESP32-S3-ETH как Modbus TCP coil для ПЛК.</span></div>
+      <div class="pt"><span class="tag">ESP32-S3-ETH</span><span class="tag">Arduino</span><span class="tag">Modbus TCP</span><span class="tag">W5500</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="sh">
+    <span class="st"><span data-lang="sk" class="al">Čo ponúkam</span><span data-lang="en">Services</span><span data-lang="ru">Услуги</span></span>
+    <div class="sl"></div>
+  </div>
+  <div class="sg">
+    <div class="sc">
+      <span class="si">&#9881;&#65039;</span>
+      <div class="sn"><span data-lang="sk" class="al">PLC automatizácia</span><span data-lang="en">PLC Automation</span><span data-lang="ru">Автоматизация ПЛК</span></div>
+      <div class="sd"><span data-lang="sk" class="al">Siemens TIA Portal, B&amp;R, Modbus RTU/TCP, OPC UA, SCADA integrácia, LAD/SCL programovanie.</span><span data-lang="en">Siemens TIA Portal, B&amp;R, Modbus RTU/TCP, OPC UA, SCADA integration, LAD/SCL programming.</span><span data-lang="ru">Siemens TIA Portal, B&amp;R, Modbus RTU/TCP, OPC UA, интеграция SCADA, LAD/SCL.</span></div>
+    </div>
+    <div class="sc">
+      <span class="si">&#x1F40D;</span>
+      <div class="sn"><span data-lang="sk" class="al">Python vývoj</span><span data-lang="en">Python Development</span><span data-lang="ru">Python разработка</span></div>
+      <div class="sd"><span data-lang="sk" class="al">Desktop aplikácie (tkinter, PySide6), spracovanie dát, SQLite, PDF/Excel exporty, Windows inštalátory.</span><span data-lang="en">Desktop apps (tkinter, PySide6), data processing, SQLite, PDF/Excel exports, Windows installers.</span><span data-lang="ru">Десктоп-приложения (tkinter, PySide6), обработка данных, SQLite, PDF/Excel, установщики.</span></div>
+    </div>
+    <div class="sc">
+      <span class="si">&#x1F4E1;</span>
+      <div class="sn">Embedded / IoT</div>
+      <div class="sd"><span data-lang="sk" class="al">ESP32 firmware (Arduino), Modbus TCP bridging, Waveshare hardware, integrácia do priemyselných sietí.</span><span data-lang="en">ESP32 firmware (Arduino), Modbus TCP bridging, Waveshare hardware, industrial network integration.</span><span data-lang="ru">Прошивка ESP32 (Arduino), Modbus TCP, оборудование Waveshare, промышленные сети.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="sh">
+    <span class="st"><span data-lang="sk" class="al">Kontakt</span><span data-lang="en">Contact</span><span data-lang="ru">Контакт</span></span>
+    <div class="sl"></div>
+  </div>
+  <div class="cb">
+    <div class="ct">
+      <h3><span data-lang="sk" class="al">Premeňme váš nápad na funkčné riešenie.</span><span data-lang="en">Let's turn your idea into a working solution.</span><span data-lang="ru">Превратим вашу идею в рабочее решение.</span></h3>
+      <p><span data-lang="sk" class="al">Dostupný pre freelance — automatizácia, Python, IoT</span><span data-lang="en">Available for freelance — automation, Python, IoT</span><span data-lang="ru">Доступен для фриланса — автоматизация, Python, IoT</span></p>
+      <a class="btn-p ccta" href="#contact-form"><span data-lang="sk" class="al">Napíšte mi &#8595;</span><span data-lang="en">Write to me &#8595;</span><span data-lang="ru">Написать мне &#8595;</span></a>
+    </div>
+    <div class="cl">
+      <a class="cla" href="https://www.linkedin.com/in/miroslav-hrbka-103857210" target="_blank">in/ LinkedIn</a>
+      <a class="cla" href="https://github.com/Orimslav" target="_blank">gh/ GitHub</a>
+      <a class="cla" href="https://ko-fi.com/orimslav" target="_blank">&#9749; Ko-fi</a>
+    </div>
+  </div>
+
+  <form class="cf" id="contact-form" action="https://formsubmit.co/4aea9d8dff80282703ea791055a9aadb" method="POST">
+    <input type="hidden" name="_subject" value="Nová správa z orimslav.github.io">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://orimslav.github.io/#contact">
+    <input type="text" name="_honey" class="cf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cf-row">
+      <div>
+        <label for="cf-name"><span data-lang="sk" class="al">Meno</span><span data-lang="en">Name</span><span data-lang="ru">Имя</span></label>
+        <input id="cf-name" type="text" name="name" required maxlength="100" autocomplete="name">
+      </div>
+      <div>
+        <label for="cf-email">Email</label>
+        <input id="cf-email" type="email" name="email" required maxlength="120" autocomplete="email">
+      </div>
+    </div>
+    <div>
+      <label for="cf-message"><span data-lang="sk" class="al">Správa</span><span data-lang="en">Message</span><span data-lang="ru">Сообщение</span></label>
+      <textarea id="cf-message" name="message" required maxlength="3000"></textarea>
+    </div>
+    <button type="submit" class="btn-p cf-submit"><span data-lang="sk" class="al">Odoslať</span><span data-lang="en">Send</span><span data-lang="ru">Отправить</span></button>
+    <div class="cf-msg" id="cf-feedback" role="status" aria-live="polite"></div>
+  </form>
+</section>
+
+</div>
+<footer><p>&copy; 2025 &middot; Orimslav &middot; Slovakia</p></footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('[data-lang]').forEach(e=>{e.classList.toggle('al',e.dataset.lang===l);});
+  document.querySelectorAll('.lb').forEach(b=>{b.classList.toggle('active',b.title===({'sk':'Sloven\u010dina','en':'English','ru':'\u0420\u0443\u0441\u0441\u043a\u0438\u0439'})[l]);});
+  localStorage.setItem('lang',l);
+}
+(function(){var l=localStorage.getItem('lang')||'sk';setLang(l);})();
+
+(function(){
+  var form=document.getElementById('contact-form');
+  if(!form)return;
+  var loadedAt=Date.now();
+  var fb=document.getElementById('cf-feedback');
+  var btn=form.querySelector('button[type=submit]');
+  var msg={
+    ok:{sk:'Ďakujem! Správa bola odoslaná. Ozvem sa čo najskôr.',en:'Thank you! Your message has been sent. I’ll get back to you soon.',ru:'Спасибо! Сообщение отправлено. Я свяжусь с вами в ближайшее время.'},
+    err:{sk:'Niečo sa pokazilo. Skúste to prosím znova, prípadne ma kontaktujte cez LinkedIn alebo GitHub.',en:'Something went wrong. Please try again, or reach me via LinkedIn or GitHub.',ru:'Что-то пошло не так. Попробуйте снова или напишите мне через LinkedIn или GitHub.'},
+    slow:{sk:'Počkajte prosím chvíľu pred odoslaním.',en:'Please wait a moment before sending.',ru:'Пожалуйста, подождите немного перед отправкой.'}
+  };
+  function lang(){return localStorage.getItem('lang')||'sk';}
+  function show(type,key){fb.className='cf-msg '+type;fb.textContent=msg[key][lang()]||msg[key].sk;}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form._honey&&form._honey.value){return;}
+    if(Date.now()-loadedAt<3000){show('err','slow');return;}
+    btn.disabled=true;
+    fetch('https://formsubmit.co/ajax/4aea9d8dff80282703ea791055a9aadb',{
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:new FormData(form)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d&&(d.success==='true'||d.success===true)){show('ok','ok');form.reset();}
+      else{show('err','err');}
+    }).catch(function(){show('err','err');}).then(function(){btn.disabled=false;});
+  });
+})();
+</script>
+</body>
+</html>
